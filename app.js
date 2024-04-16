@@ -26,11 +26,19 @@ app.get("/carros", (req, res) => {
     res.json({carros: carros})
 })
 
-/*
+
 app.get("/carros/:placa", (req, res) => {
-    carro = carros.find((c) => c == req.params.placa)
+    carro = carros.find((c) => c.placa == req.params.placa)
     console.log(req.params.placa)
     res.json({carro: carro})
+})
+
+/*
+app.post("/carros", (req, res) => {
+    let carro = {
+        placa: req.params.placa,
+        marca: req.
+    }
 })
 */
 

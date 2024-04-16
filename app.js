@@ -43,6 +43,12 @@ app.post("/carros", (req, res) => {
     res.json({tipo:"agregar"})
 })
 
+app.delete("/carros/:placa", (req, res) => {
+    indice = carros.findIndex((c) => c.placa == req.params.placa)
+    carros.splice(indice, 1)
+    res.json({tipo: "eliminar"})
+})
+
 app.listen(3000, ()=> {
     console.log("Escuchando en puerto 3000")
 })

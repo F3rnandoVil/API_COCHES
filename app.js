@@ -33,14 +33,18 @@ app.get("/carros/:placa", (req, res) => {
     res.json({carro: carro})
 })
 
-/*
+
 app.post("/carros", (req, res) => {
     let carro = {
         placa: req.params.placa,
-        marca: req.
+        marca: req.params.marca,
+        modelo: req.params.marca
     }
+
+    carros.push(carro)
+    res.json({tipo:"argegar"})
 })
-*/
+
 
 app.listen(3000, ()=> {
     console.log("Escuchando en puerto 3000")

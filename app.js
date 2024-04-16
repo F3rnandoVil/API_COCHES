@@ -45,7 +45,6 @@ app.post("/carros", (req, res) => {
     res.json({tipo:"argegar"})
 })
 
-
 app.listen(3000, ()=> {
     console.log("Escuchando en puerto 3000")
 })

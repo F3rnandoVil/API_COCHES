@@ -37,7 +37,13 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({placa, marca, modelo})
+            body: JSON.stringify(
+                {
+                    placa: placa, 
+                    marca: marca, 
+                    modelo: modelo
+                }
+            )
         })
         .then(response => response.json())
         .then(data => {

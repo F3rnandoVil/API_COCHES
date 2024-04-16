@@ -29,20 +29,18 @@ app.get("/carros", (req, res) => {
 
 app.get("/carros/:placa", (req, res) => {
     carro = carros.find((c) => c.placa == req.params.placa)
-    console.log(req.params.placa)
     res.json({carro: carro})
 })
 
 
 app.post("/carros", (req, res) => {
     let carro = {
-        placa: req.params.placa,
-        marca: req.params.marca,
-        modelo: req.params.marca
+        placa: req.body.placa,
+        marca: req.body.marca,
+        modelo: req.body.modelo
     }
-
     carros.push(carro)
-    res.json({tipo:"argegar"})
+    res.json({tipo:"agregar"})
 })
 
 app.listen(3000, ()=> {

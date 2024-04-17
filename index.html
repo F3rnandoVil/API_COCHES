@@ -28,26 +28,38 @@
             console.log(data);
         });
     });
-    btnAdd.addEventListener('click', () => {
+    btnAdd.addEventListener('click', () =>
+    {
         const placa = document.getElementById('txtPlac').value;
         const marca = document.getElementById('txtMarc').value;
         const modelo = document.getElementById('txtMod').value;
-        fetch('http://localhost:3000/carros', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(
-                {
-                    placa: placa, 
-                    marca: marca, 
-                    modelo: modelo
-                }
-            )
-        })
+
+        var flag = false;
+
+        fetch('http://localhost:3000/carros')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            for (let i = 0; i < data.carros.length; i++) {
+                console.log(data.carros[i].placa);
+                if (data.carros[i].placa == placa) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
+                fetch('http://localhost:3000/carros', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify
+                    ({
+                        placa: placa, 
+                        marca: marca, 
+                        modelo: modelo
+                    })
+                })
+                .then(response => response.json())
+                .then(data => console.log(data));
+            }
         });
     });
     btnErrase.addEventListener('click', () => {
